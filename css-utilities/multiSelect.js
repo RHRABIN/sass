@@ -2,8 +2,8 @@ const selected_item_parent = document.querySelector(".selected-item");
 const selected_items = document.querySelectorAll(".item");
 
 const handleSelect = (clickValue) => {
-    const items = document.querySelectorAll(".item");
     const options = document.querySelectorAll(".option");
+    const items = document.querySelectorAll(".item");
 
     const selectedIds = Array.from(items).map(i => i.id.toLocaleLowerCase());
 
@@ -42,10 +42,16 @@ const handleSelect = (clickValue) => {
         filterData = Array.from(items).filter(i => i.id !== clickValue);
         selected_item_parent.textContent = "";
         Array.from(filterData).forEach(i => selected_item_parent.insertBefore(i, selected_item_parent.querySelector('.search-input')))
-
     }
-    document.getElementById("search-placeholder").textContent = ""
+    document.getElementById("search-placeholder").style.display = "none";
 
+}
+
+const handleFocus = (clickValue, e) => {
+    if (e.key === "Enter") {
+        e.stopPropagation()
+        handleSelect(clickValue)
+    }
 }
 
 const removeSelectedItem = (event, value) => {
@@ -59,6 +65,14 @@ const removeSelectedItem = (event, value) => {
     while (selected_item_parent.firstChild !== searchInput) {
         selected_item_parent.removeChild(selected_item_parent.firstChild);
     }
+
+    //  remove the selected class
+    const options = document.querySelectorAll(".option");
+    Array.from(options).forEach(i => {
+        if (i.innerText == value.id) {
+            i.classList.remove("selected")
+        }
+    });
 
     // Insert the filtered elements before the search input
     restData.map(el => selected_item_parent.insertBefore(el, searchInput));

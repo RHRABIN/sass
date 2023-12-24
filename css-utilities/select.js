@@ -4,13 +4,16 @@ const optionMenu = document.querySelector(".select-group"),
     sBtn_text = optionMenu.querySelector(".sBtn-text");
 const search_input = document.getElementById("search-input");
 
+
 let isOptionOpen = false;
 
 const handleToggle = () => {
     optionMenu.classList.toggle("active")
     if (optionMenu.classList.contains("active")) {
-        search_input.focus()
+        search_input.focus();
+        // document.getElementById("search-placeholder").style.display = "none";
     }
+
     isOptionOpen = true;
 }
 
@@ -36,15 +39,7 @@ const handleToggle = () => {
 let active = -1;
 const dropdownMenuItems = Array.from(options || []);
 
-// Add a click event listener to the document to close the dropdown when clicking outside
-document.addEventListener("click", (event) => {
-    const isClickInside = optionMenu.contains(event.target) || selectBtn.contains(event.target);
 
-    if (!isClickInside && isOptionOpen) {
-        optionMenu.classList.remove("active");
-        isOptionOpen = false;
-    }
-});
 
 const handleOptionKeyDown = (e) => {
     if (isOptionOpen) {
@@ -106,3 +101,14 @@ const handleKeyDown = (e) => {
         isOptionOpen = true;
     }
 }
+
+// Add a click event listener to the document to close the dropdown when clicking outside
+document.addEventListener("click", (event) => {
+    const isClickInside = optionMenu.contains(event.target) || selectBtn.contains(event.target);
+
+    if (!isClickInside && isOptionOpen) {
+        optionMenu.classList.remove("active");
+        isOptionOpen = false;
+        // document.getElementById("search-placeholder").style.display = "block";
+    }
+});

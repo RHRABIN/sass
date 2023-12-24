@@ -27,7 +27,7 @@
     <div onkeydown="handleOptionKeyDown(event)" class="select-group">
         <div role="button" onkeydown="handleKeyDown(event)" onclick="handleToggle()" tabindex="1" class="select-btn ">
             <div class="selected-item">
-                <div id="search-placeholder">Search...</div>
+                <div aria-placeholder="search" id="search-placeholder">Search...</div>
                 <!-- <div id="one" class="item">One
                     <button onclick="removeSelectedItem(event)">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16">
@@ -40,8 +40,7 @@
 
 
                 <div class="search-input">
-                    <input id="search-input" oninput="handleFilter(event)" class="sBtn-text" type="text" name=""
-                        placeholder="">
+                    <input id="search-input" oninput="handleFilter(event)" class="" type="text" name="" placeholder="">
                 </div>
             </div>
             <i class="bx bx-chevron-down"></i>
@@ -49,16 +48,19 @@
         </div>
 
         <ul class="options">
-            <li onclick="handleSelect('Github')" tabindex="0" class="option">
+            <li onclick="handleSelect('Github')" onkeydown="handleFocus('Github',event)" tabindex="0" class="option">
                 <span value="Github" class="option-text">Github</span>
             </li>
-            <li onclick="handleSelect('Instagram')" tabindex="0" class="option">
+            <li onclick="handleSelect('Instagram')" onkeydown="handleFocus('Instagram',event)" tabindex="0"
+                class="option">
                 <span value="Instagram" class="option-text">Instagram</span>
             </li>
-            <li onclick="handleSelect('Facebook')" tabindex="0" class="option">
+            <li onclick="handleSelect('Facebook')" onkeydown="handleFocus('Facebook',event)" tabindex="0"
+                class="option">
                 <span value="Facebook" class="option-text">Facebook</span>
             </li>
-            <li onclick="handleSelect('Linkedin')" tabindex="0" class="option">
+            <li onclick="handleSelect('Linkedin')" onkeydown="handleFocus('Linkedin',event)" tabindex="0"
+                class="option">
                 <span value="Linkedin" class="option-text">Linkedin</span>
             </li>
 
