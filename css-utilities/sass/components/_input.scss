@@ -1,0 +1,34 @@
+.input-field-common-style {
+    background: $input-background;
+    border: $input-border-width $border-style $input-border-color;
+    color: $input-color;
+    font-size: $input-font-size;
+    height: $input-height;
+    width: $input-width !important;
+    margin: 0;
+    border-radius: $btn-border-radius;
+    padding: $input-padding;
+}
+
+%input-group-style {
+    font-size: $input-font-size;
+    font-weight: $input-font-weight;
+    font-family: inherit;
+    line-height: $input-line-height;
+    margin: $input-group-margin;
+    display: inline-block;
+
+    label {
+        display: block;
+        margin-bottom: 2px;
+    }
+}
+
+.input-group {
+    // height: $input-group-height;
+    @extend %input-group-style;
+
+    @each $color, $value in $colors {
+        @include input-variant($color, $value);
+    }
+}

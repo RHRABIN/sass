@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!----======== CSS ======== -->
+    <link rel="stylesheet" href="./sass/main.css">
+
+    <!--===== Box icons CSS =====-->
+    <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
+
+    <title>Custom Dropdown Select Menu</title>
+</head>
+
+<body>
+    <p style="margin: 1rem;">Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic inventore sapiente fuga et at,
+        odio
+        tempora, totam
+        nobis provident vitae ipsum nam accusantium odit? Consequatur, aspernatur expedita? Consequuntur exercitationem
+        aliquid laboriosam quam, doloremque nesciunt debitis neque culpa modi facilis est sequi, assumenda soluta ut
+        esse consectetur incidunt porro autem eos!</p>
+
+
+    <div onkeydown="handleOptionKeyDown(event)" class="select-group">
+        <div role="button" onkeydown="handleKeyDown(event)" onclick="handleToggle()" tabindex="1" class="select-btn ">
+            <div class="selected-item">
+                <div id="search-placeholder">Search...</div>
+                <!-- <div id="one" class="item">One
+                    <button onclick="removeSelectedItem(event)">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16">
+                            <path
+                                d="M11.9997 10.5865L16.9495 5.63672L18.3637 7.05093L13.4139 12.0007L18.3637 16.9504L16.9495 18.3646L11.9997 13.4149L7.04996 18.3646L5.63574 16.9504L10.5855 12.0007L5.63574 7.05093L7.04996 5.63672L11.9997 10.5865Z"
+                                fill="currentColor"></path>
+                        </svg>
+                    </button>
+                </div> -->
+
+
+                <div class="search-input">
+                    <input id="search-input" oninput="handleFilter(event)" class="sBtn-text" type="text" name=""
+                        placeholder="">
+                </div>
+            </div>
+            <i class="bx bx-chevron-down"></i>
+
+        </div>
+
+        <ul class="options">
+            <li onclick="handleSelect('Github')" tabindex="0" class="option">
+                <span value="Github" class="option-text">Github</span>
+            </li>
+            <li onclick="handleSelect('Instagram')" tabindex="0" class="option">
+                <span value="Instagram" class="option-text">Instagram</span>
+            </li>
+            <li onclick="handleSelect('Facebook')" tabindex="0" class="option">
+                <span value="Facebook" class="option-text">Facebook</span>
+            </li>
+            <li onclick="handleSelect('Linkedin')" tabindex="0" class="option">
+                <span value="Linkedin" class="option-text">Linkedin</span>
+            </li>
+
+
+        </ul>
+
+
+    </div>
+    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nemo similique molestiae aperiam quam blanditiis autem
+        dolore ipsum vitae. Officia, ex?</p>
+
+    <script src="multiSelect.js"></script>
+    <script src="select.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,35 @@
+.flex {
+    display: flex;
+}
+
+.item-center {
+    align-items: center;
+}
+
+.justify-center {
+    justify-content: center;
+}
+
+.g-2 {
+    gap: 8px;
+}
+
+.my-2 {
+    margin: 8px 0px;
+}
+
+.disabled {
+    pointer-events: none;
+    background: #E7E7E7 !important;
+    opacity: $btn-disabled-opacity;
+
+    // padding: 0 !important;
+
+    & input {
+        background-color: #E7E7E7;
+    }
+
+    // & i {
+    //     background-color: #E7E7E7;
+    // }
+}

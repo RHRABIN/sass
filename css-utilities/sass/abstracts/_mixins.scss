@@ -1,0 +1,267 @@
+@mixin transition-ease {
+    transition: all 0.2s ease-in-out;
+}
+
+@mixin media-sm {
+    @media screen and (min-width: 320px) {
+        @content;
+    }
+}
+
+@mixin media-md {
+    @media screen and (min-width: 768px) {
+        @content;
+    }
+}
+
+@mixin media-lg {
+    @media screen and (min-width: 1024px) {
+        @content;
+    }
+}
+
+@mixin media-xl {
+    @media screen and (min-width: 1440px) {
+        @content;
+    }
+}
+
+
+@mixin button-variant($color,
+    $background,
+    $border-color,
+    $hover-color,
+    $hover-background,
+    $hover-border-color,
+    $focus-background-color: false,
+) {
+    color: $color;
+    background-color: $background;
+    border: $border-width $border-style $border-color;
+
+    &:hover {
+        color: $hover-color;
+        background-color: $hover-background;
+        border: $border-width $border-style $hover-border-color;
+    }
+
+    // &:active {
+    //     background-color: #000 !important;
+    // }
+
+    &:focus {
+        @if $focus-background-color {
+            box-shadow: 0px 0px 10px 0px $focus-background-color;
+        }
+
+        @else {
+            box-shadow: 0px 0px 10px 0px lighten($background, 10%);
+        }
+
+        outline: 0;
+
+        @if $focus-background-color {
+            background-color: rgba($color: $focus-background-color, $alpha: .2);
+            color: $color;
+        }
+
+        @else {
+            background-color: darken($background, 10%);
+        }
+
+        border: $border-width $border-style darken($border-color, 10%);
+
+    }
+}
+
+@mixin focus ($value) {
+    border: $input-border-width $border-style $value;
+    outline: none;
+    box-shadow: 0px 0px 4px 0px $value ;
+}
+
+@mixin svg-position () {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: $icon-height;
+    height: $icon-width;
+}
+
+@mixin input-variant($variant, $value) {
+    textarea {
+        height: $textarea-height;
+        padding: $textarea-padding;
+    }
+
+    input,
+    textarea {
+        @extend .input-field-common-style;
+
+        &:focus {
+            border: $input-border-width $border-style #{$primary};
+            outline: none;
+            box-shadow: 0px 0px 4px 0px #{$primary};
+        }
+
+        &:disabled,
+        &.disabled,
+        fieldset:disabled & {
+            pointer-events: none;
+            background-color: #E7E7E7 !important;
+            opacity: $btn-disabled-opacity;
+        }
+
+        &::placeholder {
+            color: $placeholder-color;
+        }
+
+    }
+
+    .icon-left {
+        svg {
+            @include svg-position();
+            left: $icon-padding;
+        }
+
+        input {
+            padding: $input-padding-left-icon;
+        }
+    }
+
+    .icon-right {
+        svg {
+            @include svg-position();
+            right: $icon-padding;
+        }
+
+        input {
+            padding: $input-padding-right-icon;
+        }
+    }
+
+    .error-message {
+        display: none;
+        color: $value;
+        font-size: $error-message-font-size;
+        line-height: $error-message-line-height;
+        margin: $error-message-margin;
+        position: absolute;
+    }
+
+    .input-parent {
+        position: relative;
+
+        button {
+            position: absolute;
+            right: 0;
+            height: 100%;
+            border-radius: 0 $btn-border-radius $btn-border-radius 0;
+        }
+    }
+
+    &.#{$variant} {
+        p {
+            color: $value;
+        }
+
+        input,
+        textarea {
+            border: $input-border-width $border-style $value;
+            outline: none;
+        }
+
+        .error-message {
+            display: inline-block;
+        }
+
+        .input-parent {
+
+            &::after {
+                content: "";
+                position: absolute;
+                top: 50%;
+                right: $icon-padding;
+                transform: translateY(-50%);
+                width: $icon-height;
+                height: $icon-width;
+
+                background:
+                    if($variant ==error,
+                        url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18"><path d="M12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12C22 17.5228 17.5228 22 12 22ZM12 20C16.4183 20 20 16.4183 20 12C20 7.58172 16.4183 4 12 4C7.58172 4 4 7.58172 4 12C4 16.4183 7.58172 20 12 20ZM12 10.5858L14.8284 7.75736L16.2426 9.17157L13.4142 12L16.2426 14.8284L14.8284 16.2426L12 13.4142L9.17157 16.2426L7.75736 14.8284L10.5858 12L7.75736 9.17157L9.17157 7.75736L12 10.5858Z" fill="rgba(254,80,80,1)"></path></svg>') no-repeat center center,
+                        if($variant ==success,
+                            url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18"><path d="M12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12C22 17.5228 17.5228 22 12 22ZM12 20C16.4183 20 20 16.4183 20 12C20 7.58172 16.4183 4 12 4C7.58172 4 4 7.58172 4 12C4 16.4183 7.58172 20 12 20ZM11.0026 16L6.75999 11.7574L8.17421 10.3431L11.0026 13.1716L16.6595 7.51472L18.0737 8.92893L11.0026 16Z" fill="rgba(47,169,44,1)"></path></svg>') no-repeat center center,
+                            if($variant ==warning,
+                                url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18"><path d="M12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12C22 17.5228 17.5228 22 12 22ZM12 20C16.4183 20 20 16.4183 20 12C20 7.58172 16.4183 4 12 4C7.58172 4 4 7.58172 4 12C4 16.4183 7.58172 20 12 20ZM11 15H13V17H11V15ZM11 7H13V13H11V7Z" fill="rgba(255,164,26,1)"></path></svg>') no-repeat center center,
+
+                                url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18"><path d="M12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12C22 17.5228 17.5228 22 12 22ZM12 20C16.4183 20 20 16.4183 20 12C20 7.58172 16.4183 4 12 4C7.58172 4 4 7.58172 4 12C4 16.4183 7.58172 20 12 20ZM11 15H13V17H11V15ZM11 7H13V13H11V7Z" "></path></svg>') no-repeat center center))) //last url is not valid, it will for without success/error/warning
+            }
+        }
+
+        .icon-right {
+            svg {
+                display: none;
+            }
+        }
+    }
+}
+
+// scss-start btn-size-mixin
+@mixin button-size($padding-y, $padding-x, $font-size, $border-radius, $small-device) {
+
+    padding: $padding-y $padding-x;
+    font-size: $font-size;
+    border-radius: $border-radius;
+
+    @if $small-device =="false" {
+        @include media-sm {
+            padding: $padding-y/4 $padding-x/4;
+            font-size: 14px;
+        }
+
+        @include media-md {
+            padding: $padding-y/3 $padding-x/3;
+            font-size: $font-size;
+        }
+
+        @include media-lg {
+            padding: $padding-y/2 $padding-x/2;
+        }
+
+        @include media-xl {
+            padding: $padding-y $padding-x;
+        }
+    }
+}
+
+@mixin font-size($size) {
+    font-size: $size;
+}
+
+@mixin flex-item($direction: row) {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: $direction;
+}
+
+@mixin box-shadow($shadow...) {
+    @if $enable-shadows {
+        $result: (
+        );
+
+    @each $value in $shadow {
+        @if $value !=null {
+            $result: append($result, $value, "comma");
+        }
+
+        @if $value ==none and length($shadow)>1 {
+            @warn "The keyword 'none' must be used as a single argument.";
+        }
+    }
+
+    @if (length($result) > 0) {
+        box-shadow: $result;
+    }
+}
+}

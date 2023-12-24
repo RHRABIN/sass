@@ -1,0 +1,125 @@
+.btn {
+    @include transition-ease;
+    background-color: transparent;
+    // color: $text-color;
+    border: $border-width $border-style transparent;
+    border-radius: $btn-border-radius;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-weight: $font-weight-medium;
+    padding: $button-base-padding*.5 $button-base-padding;
+    font-size: $font-size-base;
+
+    @include media-sm {
+        padding: $button-base-padding*.25 $button-base-padding*.5;
+        font-size: $font-size-default;
+    }
+
+    @include media-md {
+        padding: $button-base-padding/2 $button-base-padding;
+        font-size: $font-size-base;
+    }
+
+    // @include media-lg {
+    //     padding: $button-base-padding $button-base-padding/2;
+    // }
+
+    // @include media-xl {
+    //     padding: $button-base-padding $button-base-padding;
+
+    // }
+
+    &:hover {
+        // background-color: $btn-transition;
+    }
+
+    &:active {
+        border: $btn-border-width $border-style #000;
+    }
+
+    // &:focus {
+    //     outline: 0;
+    // }
+
+    &:disabled,
+    &.disabled,
+    fieldset:disabled & {
+        // color: #fff;
+        pointer-events: none;
+        // background-color: #ccc !important;
+        //   background-image: if($enable-gradients, none, null);
+        // border-color: #000;
+        opacity: $btn-disabled-opacity;
+        @include box-shadow(none);
+    }
+}
+
+// scss btn-variant-loops
+@each $color, $value in $colors {
+    .btn-#{$color} {
+        @if $color =="black" {
+            @include button-variant(#fff, //text color
+                $value, //background color
+                $value, // border color
+                #fff, // hover text color
+                lighten($value, 10%), // hover background color
+                lighten($value, 10%)); // hover border color
+        }
+
+        @else {
+            @include button-variant(#fff, //text color
+                $value, //background color
+                $value, // border color
+                #fff, // hover text color
+                lighten($value, 10%), // hover background color
+                lighten($value, 10%)); // hover border color
+        }
+    }
+}
+
+// scss btn-variant-loops
+@each $color, $value in $colors {
+    .btn-outline-#{$color} {
+        @include button-variant($value, //text color
+            transparent, //background color
+            $value, // border color
+            #fff, // hover text color
+            lighten($value, 10%), // hover background color
+            lighten($value, 10%), // hover border color
+            lighten($value, 10%)); //[Only for outline button] button press bg color color
+
+    }
+}
+
+.btn-icon {
+    @include flex-item();
+    width: $button-icon-width;
+    height: $button-icon-height;
+    padding: 0px;
+    border-radius: 50%;
+}
+
+@each $color, $value in $colors {
+    .btn-link-#{$color} {
+        @include button-variant($value, //text color
+            transparent, //background color
+            transparent, // border color
+            lighten($value, 10%), // hover text color
+            transparent, // hover background color
+            transparent, // hover border color
+            // lighten($value, 10%)
+        );
+        padding: 0 !important;
+
+    }
+}
+
+.btn-sm {
+    @include button-size($btn-padding-y-sm, $btn-padding-x-sm, $btn-font-size-sm, $btn-border-radius-sm, "true");
+}
+
+.btn-lg {
+    @include button-size($btn-padding-y-lg, $btn-padding-x-lg, $btn-font-size-lg, $btn-border-radius-lg, "false");
+}

@@ -1,0 +1,203 @@
+//Variables
+
+//Color Systems
+
+// Basic colors
+$primary: #4398FE;
+$secondary: #FF9900;
+$success: #38C976;
+$warning: #FFB84D;
+$error: #FE5050;
+$black: #000000;
+
+// heading color
+$headings-color: inherit;
+
+// mapped basic colors
+$colors: (
+    "primary": $primary,
+    "secondary": $secondary,
+    "success": $success,
+    "warning": $warning,
+    "error": $error,
+    "black": $black,
+);
+
+$enable-shadows: false;
+
+//placeholder
+$placeholder-color: #909090;
+$input-color: #333333;
+
+
+
+// scss start box-shadow-variables
+$box-shadow: 0 .5rem 1rem rgba($black, .15) !default;
+$box-shadow-sm: 0 .125rem .25rem rgba($black, .075) !default;
+$box-shadow-lg: 0 1rem 3rem rgba($black, .175) !default;
+$box-shadow-inset: inset 0 1px 2px rgba($black, .075) !default;
+// scss end box-shadow-variables
+
+// scss-start focus-ring-variables
+$focus-ring-width: .25rem !default;
+$focus-ring-opacity: .25 !default;
+$focus-ring-color: rgba($primary, $focus-ring-opacity) !default;
+$focus-ring-blur: 0 !default;
+$focus-ring-box-shadow: 0 0 $focus-ring-blur $focus-ring-width $focus-ring-color !default;
+// scss-end focus-ring-variables
+
+// scss-start border-variables
+$border-width: 1px !default;
+$input-border-width: 1.3px !default;
+$border-widths: (
+    1: 1px,
+    2: 2px,
+    3: 3px,
+    4: 4px,
+    5: 5px) !default;
+$border-style: solid !default;
+
+// scss-start spacer-variables-maps
+$spacer: 1rem !default; //16px
+
+
+//----------- input ------------//
+$icon-height: 20px;
+$icon-width: 20px;
+$icon-padding: 8px;
+
+$textarea-height: 120px;
+$textarea-padding: 15px;
+
+$dropdown-padding: 15px;
+$dropdown-height: 350px;
+
+$input-group-color: #000;
+$input-group-margin: 0 20px 20px;
+// input
+$input-background: #fff;
+$input-border-color: #CECECE;
+$input-font-size: 13px;
+$input-line-height: 20px;
+$input-font-weight: 400;
+$input-height: 50px;
+$input-width: 330px;
+$input-padding-right-icon: 0 30px 0 15px;
+$input-padding-left-icon: 0 15px 0 30px;
+$input-padding-x-icon: 0 30px 0 30px;
+$input-padding: 16.5px 15px;
+
+$error-color: $error;
+$error-border: $input-border-width $border-style $error;
+$error-message-font-size: 12px;
+$error-message-line-height: 15px;
+$error-message-margin: 2px 0 0;
+
+
+
+
+// scss-start headings-variables
+$headings-margin-bottom: $spacer * .5 !default;
+$headings-font-family: null !default;
+$headings-font-style: null !default;
+$headings-font-weight: 500 !default;
+$headings-line-height: 1.2 !default;
+$headings-color: $headings-color !default;
+// scss-end headings-variable
+
+// $font-size-base affects the font size of the body text
+$font-size-base: 1rem !default;
+$font-size-xs: $font-size-base * .6875 !default; //11px
+$font-size-sm: $font-size-base * .8125 !default; //13px
+$font-size-default: $font-size-base * .875 !default; //14px
+$font-size-lg: $font-size-base * 1.25 !default; //20px
+
+$font-weight-lighter: lighter !default;
+$font-weight-light: 300 !default;
+$font-weight-normal: 400 !default;
+$font-weight-medium: 500 !default;
+$font-weight-semibold: 600 !default;
+$font-weight-bold: 700 !default;
+$font-weight-bolder: bolder !default;
+
+$font-weight-base: $font-weight-normal !default;
+
+$line-height-base: 1.5 !default;
+$line-height-sm: 1.25 !default;
+$line-height-lg: 2 !default;
+
+$h1-font-size: $font-size-base * 2.5 !default;
+$h2-font-size: $font-size-base * 2 !default;
+$h3-font-size: $font-size-base * 1.75 !default;
+$h4-font-size: $font-size-base * 1.5 !default;
+$h5-font-size: $font-size-base * 1.25 !default;
+$h6-font-size: $font-size-base !default;
+// scss-docs-end font-variables
+
+
+//border radius
+$base-border-radius: 0.25rem; //4px
+$border-radius: $base-border-radius; //4px
+$border-radius-sm: $base-border-radius * 0.50; //2px
+$border-radius-lg: $base-border-radius * 1.5; //8px
+//end border radius
+
+// button -----------
+$button-base-padding: 1rem;
+$button-icon-width: 52px;
+$button-icon-height: 52px;
+
+
+// @media screen and (min-width: 521px) and (max-width: 1200px) {
+//     $button-base-padding: .8rem !global;
+// }
+
+// @media screen and (max-width: 320px) {
+//     $button-base-padding: .2rem !global;
+// }
+
+
+$btn-padding-y-sm: $button-base-padding * .25; //4px
+$btn-padding-x-sm: $button-base-padding *.5; // 8px
+
+$btn-padding-y-lg: $button-base-padding; //16px
+$btn-padding-x-lg: $button-base-padding * 2; //32px
+
+//padding and font size button
+$btn-padding-y-sm: $btn-padding-y-sm !default;
+$btn-padding-x-sm: $btn-padding-x-sm !default;
+$btn-font-size-sm: $font-size-sm !default;
+
+$btn-padding-y-lg: $btn-padding-y-lg !default;
+$btn-padding-x-lg: $btn-padding-x-lg !default;
+$btn-font-size-lg: $font-size-lg !default;
+
+$btn-border-width: $border-width !default;
+
+$btn-font-weight: $font-weight-normal !default;
+$btn-box-shadow: inset 0 1px 0 rgba(#fff, .15),
+    0 1px 1px rgba($black, .075) !default;
+$btn-focus-width: $focus-ring-width !default;
+$btn-focus-box-shadow: $focus-ring-box-shadow !default;
+$btn-disabled-opacity: .65 !default;
+$btn-active-box-shadow: inset 0 3px 5px rgba($black, .125) !default;
+
+// border radius button
+$btn-border-radius: $border-radius !default;
+$btn-border-radius-sm: $border-radius-sm !default;
+$btn-border-radius-lg: $border-radius-lg !default;
+
+$btn-transition: color .15s ease-in-out,
+    background-color .15s ease-in-out,
+    border-color .15s ease-in-out,
+    box-shadow .15s ease-in-out !default;
+
+$btn-hover-bg-shade-amount: 15% !default;
+$btn-hover-bg-tint-amount: 15% !default;
+$btn-hover-border-shade-amount: 20% !default;
+$btn-hover-border-tint-amount: 10% !default;
+$btn-active-bg-shade-amount: 20% !default;
+$btn-active-bg-tint-amount: 20% !default;
+$btn-active-border-shade-amount: 25% !default;
+$btn-active-border-tint-amount: 10% !default;
+// scss-docs-end btn-variables
