@@ -1,0 +1,221 @@
+$color1: #f4f4f4;
+
+%checkbox-icon {
+    content: "";
+    display: inline-block;
+    vertical-align: middle;
+    height: 1.15em;
+    width: 1.15em;
+    margin-right: 0.5em;
+    color: rgba(0, 0, 0, 0.275);
+    border: $border-style 0.06em;
+    box-shadow: 0 0 0.04em, 0 0.06em 0.16em -0.03em inset, 0 0 0 0.07em transparent inset;
+    border-radius: 0.2em;
+    background: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" version="1.1" xml:space="preserve" fill="white" viewBox="0 0 9 9"><rect x="0" y="4.3" transform="matrix(-0.707 -0.7072 0.7072 -0.707 0.5891 10.4702)" width="4.3" height="1.6" /><rect x="2.2" y="2.9" transform="matrix(-0.7071 0.7071 -0.7071 -0.7071 12.1877 2.9833)" width="6.1" height="1.7" /></svg>') no-repeat center, transparent;
+    background-size: 0;
+    transform: translate3d(0, 0, 0);
+    transition: $btn-transition;
+}
+
+//checkbox button
+.checkbox-group {
+    display: inline-block;
+    margin: 0.5rem;
+
+    &::after,
+    &::before {
+        box-sizing: border-box;
+    }
+
+    [type=checkbox].checkbox {
+        margin: 0;
+        width: 0;
+        height: 0;
+        display: inline;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+
+        &:disabled {
+            +label {
+                &:before {
+                    @extend %checkbox-icon;
+                    background-color: $toggle-background !important;
+                    border: $border-width $border-style transparent;
+                    background: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" version="1.1" xml:space="preserve" fill="white" viewBox="0 0 9 9"><rect x="0" y="4.3" transform="matrix(-0.707 -0.7072 0.7072 -0.707 0.5891 10.4702)" width="4.3" height="1.6" /><rect x="2.2" y="2.9" transform="matrix(-0.7071 0.7071 -0.7071 -0.7071 12.1877 2.9833)" width="6.1" height="1.7" /></svg>') no-repeat center, transparent;
+                }
+            }
+
+            +.disabled-selected {
+                &:before {
+                    background-color: $primary !important;
+                    box-shadow: inset 0 0 0 4px $color1;
+                    border-color: darken($color1, 25%);
+                    background: $primary;
+                    opacity: 0.6;
+                }
+            }
+
+        }
+
+
+        +label {
+
+            &:before {
+                @extend %checkbox-icon;
+            }
+        }
+
+        &:checked+label:before {
+            background-color: $primary;
+            background-size: 0.75em;
+            color: rgba(0, 0, 0, 0.075);
+        }
+
+        &:focus+label:before {
+            box-shadow: 0 0 0.04em, 0 0.06em 0.16em -0.03em transparent inset, 0 0 0 0.07em rgba(0, 0, 0, 0.1) inset, 0 0 0 3.3px rgba($primary, 0.55), 0 0 0 5px rgba($primary, 0.3);
+        }
+
+        @each $color, $value in $colors {
+            // @include checkbox-variant($color, $value);
+
+        }
+
+    }
+}
+
+
+//radio button
+.radio {
+    margin: 0.5rem;
+    display: inline-block;
+
+    input[type="radio"] {
+        position: absolute;
+        opacity: 0;
+
+        +label {
+            &:before {
+                content: '';
+                background: $color1;
+                border-radius: 100%;
+                border: $border-width $border-style darken($color1, 25%);
+                display: inline-block;
+                width: 1.4em;
+                height: 1.4em;
+                position: relative;
+                top: -0.2em;
+                margin-right: 1em;
+                vertical-align: middle;
+                cursor: pointer;
+                text-align: center;
+                transition: all 250ms ease;
+            }
+        }
+
+        &:checked {
+            +label {
+                &:before {
+                    background-color: $primary;
+                    box-shadow: inset 0 0 0 4px $color1;
+                }
+            }
+        }
+
+        &:focus {
+            +label {
+                &:before {
+                    outline: none;
+                    border-color: $primary;
+                }
+            }
+        }
+
+        &:disabled {
+            +label {
+                &:before {
+                    box-shadow: inset 0 0 0 4px $color1;
+                    border-color: darken($color1, 25%);
+                    background: darken($color1, 25%);
+                }
+            }
+
+            +.disabled-selected {
+                &:before {
+                    box-shadow: inset 0 0 0 4px $color1;
+                    border-color: darken($color1, 25%);
+                    background: darken($primary, 10%);
+                    opacity: 0.4;
+                }
+            }
+        }
+
+        +label {
+            &:empty {
+                &:before {
+                    margin-right: 0;
+                }
+            }
+        }
+    }
+}
+
+//toggle button
+.checkbox-toggle {
+    display: inline-block;
+    margin: 0.5rem;
+
+    input[type=checkbox] {
+        height: 0;
+        width: 0;
+        display: none;
+    }
+
+    label {
+        cursor: pointer;
+        text-indent: -9999px;
+        width: 40px;
+        height: 28px;
+        background: $toggle-background;
+        display: block;
+        border-radius: 100px;
+        position: relative;
+
+        &:after {
+            content: '';
+            position: absolute;
+            top: 5px;
+            left: 5px;
+            width: 18px;
+            height: 18px;
+            background: #ffffff;
+            border-radius: 90px;
+            transition: 0.3s;
+        }
+    }
+
+    input:checked+label {
+        background: $primary;
+
+    }
+
+    input:disabled+label {
+        opacity: 0.6;
+        cursor: default;
+
+        &:active:after {
+            width: 18px;
+
+        }
+    }
+
+    input:checked+label:after {
+        left: calc(100% - 5px);
+        transform: translateX(-100%);
+    }
+
+    label:active:after {
+        width: 25px;
+    }
+
+}
