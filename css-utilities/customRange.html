@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<!-- Coding By CodingNepal - youtube.com/codingnepal -->
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="utf-8">
+    <title>Price Range Slider | CodingNepal</title>
+    <link rel="stylesheet" href="../css-utilities/sass/main.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+    <!-- single slider range -->
+    <div class="range-group">
+        <h5 style="margin: 1rem; margin-left: 5rem;">Single Range picker</h5>
+        <p style="margin: 1rem; text-align: center;" id="single-slider-value"></p>
+        <span class="bar"><span class="fill"></span></span>
+        <input id="single-slider" class="single-slider" type="range" min="0" max="100" value="50">
+    </div>
+
+    <!-- multi slider range -->
+    <div class="range-group double-range">
+        <h5 style="margin: 1rem; text-align: center;">Double Range picker</h5>
+        <p class="flex item-center justify-center my-2">
+            <span id="min">200</span>
+            <span>-</span>
+            <span id="max">800</span>
+        </p>
+        <div class="slider">
+            <div class="progress"></div>
+        </div>
+        <div class="range-input">
+            <input type="range" class="range-min" min="0" max="1000" value="200" step="10">
+            <input type="range" class="range-max" min="0" max="1000" value="800" step="10">
+        </div>
+    </div>
+
+    <script>
+        const slider = document.getElementById("single-slider");
+        const fill = document.querySelector(".bar .fill");
+
+        function setBar() {
+            fill.style.width = slider.value + "%";
+            document.getElementById("single-slider-value").innerHTML = slider.value;
+        }
+
+        slider.addEventListener("input", setBar);
+        setBar();
+
+
+        const rangeInput = document.querySelectorAll(".double-range .range-input input"),
+            range = document.querySelector(".double-range .slider .progress"),
+            min = document.querySelector("#min"),
+            max = document.querySelector("#max");
+
+        let priceGap = 100;
+
+        rangeInput.forEach(input => {
+            input.addEventListener("input", e => {
+                let minVal = parseInt(rangeInput[0].value),
+                    maxVal = parseInt(rangeInput[1].value);
+
+                if ((maxVal - minVal) < priceGap) {
+                    if (e.target.className === "range-min") {
+                        rangeInput[0].value = maxVal - priceGap
+                    } else {
+                        rangeInput[1].value = minVal + priceGap;
+                    }
+                } else {
+                    min.innerHTML = minVal;
+                    max.innerHTML = maxVal;
+                    range.style.left = ((minVal / rangeInput[0].max) * 100) + "%";
+                    range.style.right = 100 - (maxVal / rangeInput[1].max) * 100 + "%";
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>

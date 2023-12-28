@@ -29,7 +29,8 @@ $enable-shadows: false;
 $placeholder-color: #909090;
 $input-color: #333333;
 
-
+//notification
+$notification-width: 330px;
 
 // scss start box-shadow-variables
 $box-shadow: 0 .5rem 1rem rgba($black, .15) !default;
@@ -95,6 +96,7 @@ $error-message-margin: 2px 0 0;
 
 //toggle
 $toggle-background: #CECECE;
+$range-background: #E1EFFF;
 
 
 

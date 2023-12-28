@@ -1,0 +1,35 @@
+.notification {
+    position: relative;
+    width: $notification-width;
+    box-shadow: 0px 0px 6px 0px #00000026;
+    border-radius: $border-radius*2;
+    padding: $input-padding;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    justify-content: space-between;
+
+    div {
+        position: relative;
+        margin-left: 2rem;
+
+        h6 {
+            margin-bottom: 0px;
+        }
+    }
+
+    @each $color, $value in $colors {
+        @include notification-variant($color, $value);
+    }
+
+    span {
+        height: 100%;
+        width: 25px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+
+}
