@@ -1002,6 +1002,77 @@ h6 {
   box-shadow: 0 0 0 10px rgba(67, 152, 254, 0.2);
 }
 
+.tooltip .tooltiptext.left::after, .tooltip .tooltiptext.right::after, .tooltip .tooltiptext.top::after, .tooltip .tooltiptext.bottom::after {
+  content: "";
+  position: absolute;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: #555 transparent transparent transparent;
+}
+
+.tooltip {
+  position: relative;
+  display: inline-block;
+  padding: 0.5rem;
+  cursor: pointer;
+}
+.tooltip .tooltiptext {
+  position: absolute;
+  display: none;
+  width: -moz-fit-content;
+  width: fit-content;
+  background-color: #555;
+  color: #fff;
+  border-radius: 4px;
+  padding: 8px 5px;
+  z-index: 1;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+.tooltip .tooltiptext.bottom {
+  top: 100%;
+  left: 50%;
+  margin-left: -60px;
+}
+.tooltip .tooltiptext.bottom::after {
+  transform: rotate(180deg);
+  bottom: 100%;
+  left: 50%;
+}
+.tooltip .tooltiptext.top {
+  bottom: 100%;
+  left: 50%;
+  margin-left: -60px;
+}
+.tooltip .tooltiptext.top::after {
+  top: 100%;
+  left: 50%;
+}
+.tooltip .tooltiptext.right {
+  top: 0;
+  left: 100%;
+  min-width: 150px;
+}
+.tooltip .tooltiptext.right::after {
+  top: 30%;
+  left: -5px;
+  transform: rotate(90deg);
+}
+.tooltip .tooltiptext.left {
+  top: 0%;
+  right: 100%;
+}
+.tooltip .tooltiptext.left::after {
+  top: 30%;
+  right: -10px;
+  transform: rotate(-90deg);
+}
+.tooltip:hover .tooltiptext {
+  display: block;
+  opacity: 1;
+}
+
 .notification {
   position: relative;
   width: 330px;
@@ -1034,7 +1105,7 @@ h6 {
   color: #4398FE !important;
 }
 .notification.primary.background {
-  background-color: rgba(67, 152, 254, 0.3);
+  background-color: rgba(67, 152, 254, 0.1);
 }
 .notification.primary div::before {
   content: "";
@@ -1058,7 +1129,7 @@ h6 {
   color: #FF9900 !important;
 }
 .notification.secondary.background {
-  background-color: rgba(255, 153, 0, 0.3);
+  background-color: rgba(255, 153, 0, 0.1);
 }
 .notification.secondary div::before {
   content: "";
@@ -1082,7 +1153,7 @@ h6 {
   color: #38C976 !important;
 }
 .notification.success.background {
-  background-color: rgba(56, 201, 118, 0.3);
+  background-color: rgba(56, 201, 118, 0.1);
 }
 .notification.success div::before {
   content: "";
@@ -1106,7 +1177,7 @@ h6 {
   color: #FFB84D !important;
 }
 .notification.warning.background {
-  background-color: rgba(255, 184, 77, 0.3);
+  background-color: rgba(255, 184, 77, 0.1);
 }
 .notification.warning div::before {
   content: "";
@@ -1130,7 +1201,7 @@ h6 {
   color: #FE5050 !important;
 }
 .notification.error.background {
-  background-color: rgba(254, 80, 80, 0.3);
+  background-color: rgba(254, 80, 80, 0.1);
 }
 .notification.error div::before {
   content: "";
@@ -1154,7 +1225,7 @@ h6 {
   color: #000000 !important;
 }
 .notification.black.background {
-  background-color: rgba(0, 0, 0, 0.3);
+  background-color: rgba(0, 0, 0, 0.1);
 }
 .notification.black div::before {
   content: "";

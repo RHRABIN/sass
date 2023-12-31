@@ -230,7 +230,7 @@
 
         &.background {
             // background-color: lighten($value, 10%);
-            background-color: rgba($color: $value, $alpha: .3)
+            background-color: rgba($color: $value, $alpha: .1)
         }
 
         div::before {
