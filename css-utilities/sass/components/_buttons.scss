@@ -75,9 +75,11 @@
                 #fff, // hover text color
                 lighten($value, 10%), // hover background color
                 lighten($value, 10%)); // hover border color
+            // width: calc(75%-25px);
         }
     }
 }
+
 
 // scss btn-variant-loops
 @each $color, $value in $colors {

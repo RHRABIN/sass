@@ -1073,6 +1073,52 @@ h6 {
   opacity: 1;
 }
 
+.tab {
+  display: inline-block;
+  padding: 0.5rem 0.6rem;
+  border: 1px solid #E5E5E5;
+  background-color: #F8F8F8;
+  border-radius: 30px;
+  text-decoration: none;
+  color: #333333;
+  font-size: 0.875rem;
+  font-weight: 400;
+  transition: all 0.3s;
+}
+.tab.active {
+  background-color: #4398FE;
+  border-color: #4398FE;
+  color: #fff;
+}
+.tab.active.tab:hover {
+  color: #e6e6e6;
+}
+.tab.tab:hover {
+  color: #4398FE;
+}
+
+.nav-parent {
+  width: 400px;
+}
+.nav-parent ul {
+  display: flex;
+  justify-content: space-between;
+  text-align: center;
+}
+.nav-parent ul li {
+  list-style: none;
+  width: 100%;
+  border-bottom: 1px solid #ccc;
+  transition: all 0.3s;
+}
+.nav-parent ul li.active {
+  border-bottom: 2px solid #4398FE;
+  padding-bottom: 12px;
+}
+.nav-parent ul a {
+  text-decoration: none;
+}
+
 .notification {
   position: relative;
   width: 330px;
